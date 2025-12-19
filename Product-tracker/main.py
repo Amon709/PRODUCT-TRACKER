@@ -289,3 +289,196 @@
 #     elif user_input == "5":
 #         print("\nПрограмма завершена!")
 #         break
+
+
+
+# ---------------- Version 0.5 ----------------------
+
+# 
+# 
+# assort_price = {}
+# change_assort_dict = {}
+# 
+# 
+# while True:
+#     user_input = input("1. Добавить новый товар\n"
+#                        "2. Удалить существующий\n"
+#                        "3. Изменить существующий\n"
+#                        "4. Показать список\n"
+#                        "5. Выход\n"
+#                        "\n"
+#                        "Выберите действие: ")
+# 
+# 
+#     if user_input == "1":
+#         input_unique_key = input("Введите уникальный ключ: ").strip().lower()
+# 
+#         item_name = input("Введите название: ").strip().lower()
+#         items_price = input("Введите цену: ").strip().lower()
+#         item_weight = input("Введите единицу измерения: ").strip().lower()
+#         quantity_items = input("Введите количество: ").strip().lower()
+# 
+#         assort_price[input_unique_key] = {item_name: [items_price, item_weight, quantity_items]}
+# 
+#         # тоже не то если было бы так то надо добавлять отдельно ключ принимать и значения валуе для соединения
+#         # assort_price[input_unique_key] = {item_name}
+#         # assort_price[items_price] = {items_price}
+#         # assort_price[item_weight] = {item_weight}
+#         # assort_price[quantity_items] = [quantity_items]
+# 
+#         print("Товар добавлен")
+#         print()
+# 
+#     elif user_input == "2":
+#         user_input_delite = input("Введите название ключа для удаления: ").strip().lower()
+#         print()
+# 
+#         if user_input_delite in assort_price:
+#             assort_price.pop(user_input_delite)
+#             print("Товар удален!")
+# 
+#         else:
+#             print("Ошибка удаления!\n\nТакого товара нет в списке.")
+# 
+#     elif user_input == "3":
+#         user_change_input_key = input("Введите уникальный ключ: ")
+# 
+#         if user_change_input_key in assort_price:
+# 
+#             item_name_change = input("Введите название: ").strip().lower()
+#             items_price_change = input("Введите цену: ").strip().lower()
+#             item_weight_change = input("Введите единицу измерения: ").strip().lower()
+#             quantity_items_change = input("Введите количество: ").strip().lower()
+# 
+#             change_assort_dict[user_change_input_key] = {item_name_change:
+#                                                         (items_price_change,
+#                                                         item_weight_change,
+#                                                         quantity_items_change)}
+# 
+#             assort_price.update(change_assort_dict)
+# 
+#             print("Товар изменен в словаре")
+# 
+#         else:
+#             print("Ошибка изменения!\nТакого ключа нет.")
+# 
+#     elif user_input == "4":
+# 
+#         for key, inner_dict in assort_price.items():
+#             #  получаем с внутреннего словаря ключ через  метод словарей keys() и получаем values  с методом славарей
+#             # values()  переводим все в лист для вывода по индексам values
+#             item_name_key = list(inner_dict.keys())[0]
+#             item_name_value = list(inner_dict.values())[0]
+# 
+#             print(f"{key} - {item_name_key} (${item_name_value[0]}) x {item_name_value[2]} {item_name_value[1]}.")
+#             print("-" * 50)
+# 
+# 
+#             # print(key, value)
+#             # print(f"{key} - {item[]} (${item} x {item} {item}.)")
+#             # print(f"{assort_price[key]} - {assort_price[value[0]]} $ "
+#                   # f"{assort_price[value[1]]} x {assort_price[value[4]]} {assort_price[value[3]]}.)")
+#             # print(f"{assort_price[key]} - {assort_price[key[0]]} $ {assort_price[value[0]]} x {assort_price[value[2]]} {assort_price[value[1]]}.)")
+# 
+#             # хм вроде нашел выход надо брать саму в цикле кей[вывести ключ] дальше кен
+#             # print(f"{assort_price[value[0]]} -.)")
+#             # print(f"{key} - {assort_price[value]["item_name"]}")
+# 
+#             # а если вывести key[key[0]так как это словарь в словаре]
+#             # print(key, value)
+#         # print(assort_price[0][1])
+#         # все не то(
+# 
+#         # print(assort_price)
+#     elif user_input == "5":
+#         print("\nПрограмма завершена!")
+#         break
+# 
+# 
+# 
+# # {'tea2': {'tea': ('10', 'ml', '2')}}
+# 
+# # так ключ tea2  он сам key отельный если его выбрать то дает значения {'tea': ('10', 'ml', '2')}
+# # надо вытащить как то из key
+
+
+
+# ---------------------------------------------------------
+# чистый код рабочий вариант кода не законченная версия так как нет обработок ошибок еще 
+
+
+
+
+assort_price = {}
+change_assort_dict = {}
+
+
+while True:
+    user_input = input("1. Добавить новый товар\n"
+                       "2. Удалить существующий\n"
+                       "3. Изменить существующий\n"
+                       "4. Показать список\n"
+                       "5. Выход\n"
+                       "\n"
+                       "Выберите действие: ")
+
+
+    if user_input == "1":
+        input_unique_key = input("Введите уникальный ключ: ").strip().lower()
+
+        item_name = input("Введите название: ").strip().lower()
+        items_price = input("Введите цену: ").strip().lower()
+        item_weight = input("Введите единицу измерения: ").strip().lower()
+        quantity_items = input("Введите количество: ").strip().lower()
+
+        assort_price[input_unique_key] = {item_name: [items_price, item_weight, quantity_items]}
+
+        print("Товар добавлен")
+        print()
+
+    elif user_input == "2":
+        user_input_delite = input("Введите название ключа для удаления: ").strip().lower()
+        print()
+
+        if user_input_delite in assort_price:
+            assort_price.pop(user_input_delite)
+            print("Товар удален!")
+
+        else:
+            print("Ошибка удаления!\n\nТакого товара нет в списке.")
+
+    elif user_input == "3":
+        user_change_input_key = input("Введите уникальный ключ: ")
+
+        if user_change_input_key in assort_price:
+
+            item_name_change = input("Введите название: ").strip().lower()
+            items_price_change = input("Введите цену: ").strip().lower()
+            item_weight_change = input("Введите единицу измерения: ").strip().lower()
+            quantity_items_change = input("Введите количество: ").strip().lower()
+
+            change_assort_dict[user_change_input_key] = {item_name_change:
+                                                        (items_price_change,
+                                                        item_weight_change,
+                                                        quantity_items_change)}
+
+            assort_price.update(change_assort_dict)
+
+            print("Товар изменен в словаре")
+
+        else:
+            print("Ошибка изменения!\nТакого ключа нет.")
+
+    elif user_input == "4":
+
+        for key, inner_dict in assort_price.items():
+
+            item_name_key = list(inner_dict.keys())[0]
+            item_name_value = list(inner_dict.values())[0]
+
+            print(f"{key} - {item_name_key} (${item_name_value[0]}) x {item_name_value[2]} {item_name_value[1]}.")
+            print("-" * 50)
+
+    elif user_input == "5":
+        print("\nПрограмма завершена!")
+        break
