@@ -482,3 +482,64 @@ while True:
     elif user_input == "5":
         print("\nПрограмма завершена!")
         break
+
+# ----------------------------------------------------------------
+# в программе решил сложным вариантом иза вложенного dict сам того не зная надо упростить
+# assort_price = {"key": item_key,
+#                 "name": item_name,
+#                 "price": item_price,
+#                 "weight": item_weight,
+#                 "quantity": item_quantity}
+
+# так не пойдет надо другим способом
+
+# это вроде похоже на рабочий вариант
+
+# ошибка была моя в сложном варианте иза добавления вложенным словарем типо
+# так не правильно добавил assort_price[unique_key] = {item_name: [item_price, item_weight, item_quantity]}
+# хотя я правильно сделал проект работает но коряво  и усложнено но там и плюс есть могу добавлять сразу в пустой словарь
+# без создания самих нужных структур требований в словаре типо вот так это пример
+#                   {"key": item_key,
+# #                 "name": item_name,
+# #                 "price": item_price,
+# #                 "weight": item_weight,
+# #                 "quantity": item_quantity}
+# ------------------------------------------------------------
+#         правильный и упрощенный  вариант добавления
+assort_price = {}
+
+while True:
+
+    item_unique_key = input("Введите уникальный ключ: ")
+    item_name = input("Введите название: ")
+    item_price = input("Введите цену: ")
+    item_weight = input("Введите единицу измерения :")
+    item_quantity = input("Введите количество: ")
+
+    assort_price[item_unique_key] = {"name": item_name,
+                                     "price": item_price,
+                                     "weight": item_weight,
+                                     "quantity": item_quantity}
+
+    print(assort_price[item_unique_key]["price"])
+# ----------------------------------------------------------------
+
+# вариант как думал нужно добавлять
+
+# assort_price = {"key": item_key,
+#                 "name": item_name,
+#                 "price": item_price,
+#                 "weight": item_weight,
+#                 "quantity": item_quantity}
+#
+#
+#
+# item_key = input("Введите уникальный ключ: ")
+# item_name = input("Введите название: ")
+# item_price = input("Введите цену: ")
+# item_weight = input("Введите единицу измерения :")
+# item_quantity = input("Введите количество: ")
+#
+# assort_price[item_key] = {item_name, item_price, item_weight, item_quantity}
+#
+# print(assort_price)
