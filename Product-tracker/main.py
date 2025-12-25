@@ -543,3 +543,91 @@ while True:
 # assort_price[item_key] = {item_name, item_price, item_weight, item_quantity}
 #
 # print(assort_price)
+
+
+
+# ------------------------------- Version 0.6 ---------------------------------------
+
+assort_price = {}
+
+
+while True:
+
+    print("-" * 40)
+
+    user_input_actions = input("1. Добавить новый товар\n"
+                               "2. Удалить существующий\n"
+                               "3. Изменить существующий\n"
+                               "4. Показать список\n"
+                               "5. Выход\n"
+                               "\n"
+                               "Выберите действие: ").strip().lower()
+    if user_input_actions != "":
+
+        if user_input_actions == "1":
+
+            assort_unique_key = input("Введите уникальный ключ: ").strip().lower()
+
+            item_name = input("Введите название: ").strip().lower()
+            item_price = input("Введите цену: ").strip().lower()
+            item_weight = input("Введите единицу измерения: ").strip().lower()
+            item_quantity = input("Введите количество: ").strip().lower()
+
+            assort_price[assort_unique_key] = {"name": item_name,
+                                               "price": item_price,
+                                               "weight": item_weight,
+                                               "quantity": item_quantity}
+
+            print("Товар добавлен в словарь!")
+
+        elif user_input_actions == "2":
+
+            item_key_remove = input("Введите уникальный ключ для удаления товара: ").strip().lower()
+
+            if item_key_remove in assort_price:
+                assort_price.pop(item_key_remove)
+                print("Товар удален!")
+
+            else:
+                print("Ошибка удаления!\n\nТакого ключа нет!")
+
+        elif user_input_actions == "3":
+            user_change_input_key = input("Введите ключ для замены: ")
+
+            if user_change_input_key == "":
+                print("Вы ничего не ввели для замены!\n\nВведите данные!")
+
+            else:
+
+                if user_change_input_key in assort_price:
+
+                    item_name_change = input("Введите новое имя товара: ")
+                    item_price_change = input("Введите новую цену для замены: ")
+                    item_weight_change = input("Введите новую единицу измерения: ")
+                    item_quantity_change = input("Введите новое количество: ")
+
+                    assort_price[user_change_input_key] = {"name": item_name_change,
+                                                           "price": item_price_change,
+                                                           "weight": item_weight_change,
+                                                           "quantity": item_quantity_change}
+
+                    print("Данные изменены!")
+
+                else:
+
+                    print("Ошибка изменения\n\nТакого ключа нет!")
+
+        elif user_input_actions == "4":
+
+            for key, value in assort_price.items():
+
+                print(f"{key} - {value['name']} (${value['price']}) x {value['quantity']} {value['weight']}.")
+
+        elif user_input_actions == "5":
+
+            print("программа завершена!")
+            break
+
+    else:
+        print("Ошибка!\nПустой ввод данных!")
+
